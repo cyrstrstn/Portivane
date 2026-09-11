@@ -19,6 +19,6 @@ Filename: "{app}\{#MyAppExeName}"; Parameters: "-service-install"; Flags: runhid
 Filename: "sc.exe"; Parameters: "start Portivane"; Flags: runhidden waituntilterminated
 Filename: "http://127.0.0.1:4747"; Flags: shellexec nowait postinstall
 [Registry]
-Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "PortivaneTray"; ValueData: "powershell.exe -WindowStyle Hidden -ExecutionPolicy Bypass -File ""{app}\portivane-tray.ps1"""; Flags: uninsdeletevalue
+Root: HKCU; Subkey: "Software\Microsoft\Windows\CurrentVersion\Run"; ValueType: string; ValueName: "PortivaneTray"; ValueData: "powershell.exe -STA -WindowStyle Hidden -ExecutionPolicy Bypass -File ""{app}\portivane-tray.ps1"""; Flags: uninsdeletevalue
 [UninstallRun]
 Filename: "{app}\{#MyAppExeName}"; Parameters: "-service-uninstall"; Flags: runhidden waituntilterminated
