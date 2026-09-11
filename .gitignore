@@ -1,0 +1,9 @@
+.tools/
+dist/
+web/dist/
+web/node_modules/
+*.log
+.DS_Store
+.impeccable/review/
+.impeccable/build/
+.testing/

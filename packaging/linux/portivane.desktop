@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=Portivane
+Comment=Publish local services through Cloudflare Tunnel
+Exec=/usr/bin/portivane
+Terminal=false
+Type=Application
+Categories=Network;Development;

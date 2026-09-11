@@ -1,0 +1,86 @@
+name: Release packages
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: npm, cache-dependency-path: web/package-lock.json }
+      - uses: actions/setup-go@v5
+        with: { go-version: '1.26.x' }
+      - run: npm ci
+        working-directory: web
+      - run: npm run build
+        working-directory: web
+      - run: go test .
+      - run: go build -trimpath -ldflags "-s -w" -o release/portivane.exe .
+      - shell: pwsh
+        run: '& "C:\\Program Files (x86)\\Inno Setup 6\\ISCC.exe" packaging/windows/portivane.iss'
+      - shell: pwsh
+        run: Compress-Archive -Path release/portivane.exe -DestinationPath release/portivane-windows-amd64.zip
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            packaging/windows/output/portivane-windows-installer.exe
+
+  macos:
+    strategy:
+      matrix: { arch: [amd64, arm64] }
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: npm, cache-dependency-path: web/package-lock.json }
+      - uses: actions/setup-go@v5
+        with: { go-version: '1.26.x' }
+      - run: npm ci && npm run build
+        working-directory: web
+      - run: go test .
+      - run: |
+          mkdir -p release/Portivane.app/Contents/MacOS
+          cp packaging/macos/Info.plist release/Portivane.app/Contents/Info.plist
+          GOOS=darwin GOARCH=${{ matrix.arch }} go build -trimpath -ldflags "-s -w" -o release/Portivane.app/Contents/MacOS/portivane .
+          hdiutil create -volname Portivane -srcfolder release/Portivane.app -ov -format UDZO release/portivane-macos-${{ matrix.arch }}.dmg
+      - uses: softprops/action-gh-release@v2
+        with: { files: 'release/portivane-macos-${{ matrix.arch }}.dmg' }
+
+  linux:
+    strategy:
+      matrix:
+        include:
+          - arch: amd64
+          - arch: arm64
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 24, cache: npm, cache-dependency-path: web/package-lock.json }
+      - uses: actions/setup-go@v5
+        with: { go-version: '1.26.x' }
+      - run: npm ci && npm run build
+        working-directory: web
+      - run: go test .
+      - run: |
+          mkdir -p release/package/usr/bin release/package/usr/share/applications
+          GOOS=linux GOARCH=${{ matrix.arch }} go build -trimpath -ldflags "-s -w" -o release/package/usr/bin/portivane .
+          cp packaging/linux/portivane.desktop release/package/usr/share/applications/portivane.desktop
+          mkdir -p release/package/DEBIAN
+          printf 'Package: portivane\nVersion: %s\nSection: net\nPriority: optional\nArchitecture: %s\nMaintainer: Portivane\nDescription: Local-first Cloudflare Tunnel operator\n' "${GITHUB_REF_NAME#v}" "${{ matrix.arch }}" > release/package/DEBIAN/control
+          dpkg-deb --build release/package release/portivane-linux-${{ matrix.arch }}.deb
+          tar -C release/package/usr/bin -czf release/portivane-linux-${{ matrix.arch }}.tar.gz portivane
+      - uses: softprops/action-gh-release@v2
+        with:
+          files: |
+            release/portivane-linux-${{ matrix.arch }}.deb
+            release/portivane-linux-${{ matrix.arch }}.tar.gz
+            packaging/linux/install-service.sh
+            packaging/linux/portivane.service

@@ -1,0 +1,16 @@
+[Unit]
+Description=Portivane local service publisher
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/portivane
+Restart=on-failure
+RestartSec=3
+Environment=PORTIVANE_SERVICE=1
+Environment=PORTIVANE_NO_BROWSER=1
+StateDirectory=portivane
+
+[Install]
+WantedBy=multi-user.target

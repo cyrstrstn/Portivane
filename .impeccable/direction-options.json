@@ -1,0 +1,157 @@
+{
+  "title": "Choose Portivane's visual world",
+  "question": "Choose the operator-console direction, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Fiber Route Tray",
+      "kicker": "THE ROLL",
+      "lineage": "fiber splice trays and optical route maps",
+      "thesis": "Every published service is one bright, inspectable route from localhost to hostname.",
+      "palette": ["#11110f", "#e8e6de", "#c8ff3d", "#74756f"],
+      "materials": ["matte graphite", "etched route lines", "signal labels"],
+      "viewport": "A left service rail feeds one oversized route canvas showing local port, tunnel edge, and public hostname on a continuous line.",
+      "risk": "The route graphic must remain operational rather than becoming decoration.",
+      "raised": [
+        {"from": "Emission rail", "raise": "Status uses line weight, dash, and doubling so color is never the only signal."},
+        {"from": "Cyclorama", "raise": "Connection phases change the whole route field's light level, not scattered badges."},
+        {"from": "Iridescent edge", "raise": "Accent color stays confined to live route edges and never floods the workspace."},
+        {"from": "High-density grid", "raise": "Secondary data packs tightly into ruled strips without inflating into cards."}
+      ],
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "service rail", "x": 0, "y": 0, "w": 3, "h": 10, "accent": false},
+        {"label": "route canvas", "x": 3, "y": 0, "w": 9, "h": 7, "accent": true},
+        {"label": "events + controls", "x": 3, "y": 7, "w": 9, "h": 3, "accent": false}
+      ]},
+      "comp": ".impeccable/mocks/decision/assigned.webp"
+    },
+    {
+      "id": "model-pick",
+      "label": "Rack Faceplate",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "homelab rack labels and patch panels",
+      "thesis": "The machine becomes a labeled rack where every open port can be patched to the public internet.",
+      "palette": ["#d8d3c5", "#1a1c1b", "#f0642f", "#6f746f"],
+      "materials": ["powder-coated steel", "engraved labels", "amber indicators"],
+      "viewport": "Listening ports form a compact rack at left while the selected service opens as a broad patch bay with a single publish lever.",
+      "risk": "It is highly familiar to homelab users but can exclude people who have never handled network hardware.",
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "rack navigation", "x": 0, "y": 0, "w": 2, "h": 10, "accent": false},
+        {"label": "patch bay", "x": 2, "y": 0, "w": 10, "h": 6, "accent": true},
+        {"label": "port ledger", "x": 2, "y": 6, "w": 10, "h": 4, "accent": false}
+      ]},
+      "comp": ".impeccable/mocks/decision/model-pick.webp"
+    },
+    {
+      "id": "challenger-terminal",
+      "label": "Living Terminal",
+      "verdict": "competitive",
+      "lineage": "green-phosphor terminal in a midnight machine room",
+      "thesis": "Tunnel setup unfolds as a legible keyboard-first conversation with the machine.",
+      "palette": ["#090c0a", "#9cff9b", "#397d49"],
+      "materials": ["curved glass", "phosphor bloom", "fixed transcript"],
+      "viewport": "A continuous transcript records discovery, login, DNS, and connection while the next valid command waits at the bottom.",
+      "case": "Strong audience recognition, but command language makes the beginner workflow less immediately clear.",
+      "risk": "The interface may feel like the command line the product is meant to simplify.",
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "transcript", "x": 0, "y": 0, "w": 12, "h": 8, "accent": false},
+        {"label": "command line", "x": 0, "y": 8, "w": 12, "h": 2, "accent": true}
+      ]},
+      "comp": ".impeccable/mocks/decision/challenger-terminal.webp",
+      "hero": "https://impeccable.style/worlds/cards/signals-instruments-phosphor-terminal-midnight-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/signals-instruments-phosphor-terminal-midnight.webp"
+    },
+    {
+      "id": "challenger-gate",
+      "label": "Route Departure Board",
+      "verdict": "competitive",
+      "lineage": "segmented boarding pass and live gate board",
+      "thesis": "Services queue as departures, and publishing assigns each one a live public gate.",
+      "palette": ["#f2f0e9", "#151817", "#e0442e", "#a9ada8"],
+      "materials": ["split-flap grid", "segmented pass", "persistent change ink"],
+      "viewport": "A fixed-column service board reranks active routes while a selected route expands into a segmented publishing pass.",
+      "case": "The origin-to-destination mapping is exceptionally clear, though less culturally native to self-hosting.",
+      "risk": "Travel language can become cute if labels stop using real networking terms.",
+      "wireframe": {"cols": 12, "rows": 10, "regions": [
+        {"label": "route board", "x": 0, "y": 0, "w": 8, "h": 10, "accent": false},
+        {"label": "publish pass", "x": 8, "y": 0, "w": 4, "h": 10, "accent": true}
+      ]},
+      "comp": ".impeccable/mocks/decision/challenger-gate.webp",
+      "hero": "https://impeccable.style/worlds/cards/vernacular-ephemera-boarding-pass-and-gate-board-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/vernacular-ephemera-boarding-pass-and-gate-board.webp"
+    },
+    {
+      "id": "challenger-emission",
+      "label": "Emission Line Rail",
+      "verdict": "declined",
+      "lineage": "calibrated spectrograph rail",
+      "thesis": "Every service registers as a precise spectral line on one calibrated network rail.",
+      "palette": ["#171918", "#e5e0d3", "#f4c542", "#55b9a6"],
+      "materials": ["banded charcoal", "needle lines"],
+      "viewport": "One off-centre rail carries listening ports, active routes, and the selected hostname.",
+      "case": "Precise but too abstract for users learning what a tunnel does.",
+      "risk": "Requires a legend before the core action becomes obvious.",
+      "kept": "Status remains legible through line form without relying on hue.",
+      "hero": "https://impeccable.style/worlds/cards/operate-c-emission-line-rail-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/operate-c-emission-line-rail.webp"
+    },
+    {
+      "id": "challenger-cyclorama",
+      "label": "Connection Dawn",
+      "verdict": "declined",
+      "lineage": "theatrical cyclorama from blackout to day",
+      "thesis": "A tunnel moves the workspace from local night through connecting dawn to public daylight.",
+      "palette": ["#08090d", "#274a9b", "#db6f7b", "#f1eee4"],
+      "materials": ["lit horizon", "cue bands"],
+      "viewport": "The connection state occupies a broad horizon with controls arranged as labeled lighting cues.",
+      "case": "Connection phases are memorable, but the system hides multiple simultaneous services.",
+      "risk": "Atmosphere can outrank operational density.",
+      "kept": "Connection state changes the environmental light level as one coordinated event.",
+      "hero": "https://impeccable.style/worlds/cards/stagecraft-theater-lighting-cyclorama-dawn-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/stagecraft-theater-lighting-cyclorama-dawn.webp"
+    },
+    {
+      "id": "challenger-cloud",
+      "label": "Diffracted Cloud Edge",
+      "verdict": "declined",
+      "lineage": "iridescent cloud-edge observation",
+      "thesis": "A narrow spectral edge reveals which local service has become publicly reachable.",
+      "palette": ["#f5f6f2", "#414746", "#91d6bf", "#9c79d7"],
+      "materials": ["cloud white", "spectral fringe"],
+      "viewport": "A quiet service field gains a narrow iridescent route edge only when a tunnel becomes live.",
+      "case": "The Cloudflare association is immediate, but the operational model is too implicit.",
+      "risk": "It can drift into generic cloud-software softness.",
+      "kept": "Color is confined to the active edge while content remains achromatic.",
+      "hero": "https://impeccable.style/worlds/cards/clouds-storms-auroras-iridescent-cloud-edge-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/clouds-storms-auroras-iridescent-cloud-edge.webp"
+    },
+    {
+      "id": "challenger-density",
+      "label": "Dense Utility Mosaic",
+      "verdict": "declined",
+      "lineage": "Japanese high-density utility sites",
+      "thesis": "Ports, routes, logs, and controls share one compact ruled mosaic with no wasted pixel.",
+      "palette": ["#ffffff", "#101111", "#d72c24", "#d7d9d8"],
+      "materials": ["hairline modules", "utility tabs"],
+      "viewport": "A tight CSS grid places every discovered port and tunnel state above the fold.",
+      "case": "Experienced operators scan it quickly, but first-time users face too much at once.",
+      "risk": "Density can obscure the one-click publishing promise.",
+      "kept": "Secondary information uses compact ruled strips rather than repeated floating cards.",
+      "hero": "https://impeccable.style/worlds/cards/japanese-high-density-web-hero.webp",
+      "board": "https://impeccable.style/worlds/cards/japanese-high-density-web.webp"
+    }
+  ],
+  "reroll": {"registers": ["safer", "bolder"]},
+  "buildPath": {"value": "code", "toggle": true},
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "A familiar infrastructure dashboard with sidebar navigation, status cards, and a tunnel table.",
+    "palette": ["#ffffff", "#111827", "#f48120"],
+    "materials": ["clean grid", "conventional dashboard chrome"],
+    "viewport": "A sidebar frames account status, summary cards, a services table, and a New tunnel button.",
+    "risk": "Immediately understandable but visually interchangeable with other admin tools.",
+    "comp": ".impeccable/mocks/decision/canon.webp"
+  },
+  "steer": true
+}
