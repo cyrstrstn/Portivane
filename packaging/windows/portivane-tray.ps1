@@ -1,6 +1,8 @@
 Add-Type -AssemblyName System.Windows.Forms
+Add-Type -AssemblyName System.Drawing
+$ErrorActionPreference = 'Stop'
 $notify = New-Object Windows.Forms.NotifyIcon
-$notify.Icon = [Drawing.SystemIcons]::Application
+$notify.Icon = [System.Drawing.SystemIcons]::Application
 $notify.Text = 'Portivane'
 $notify.Visible = $true
 $menu = New-Object Windows.Forms.ContextMenuStrip
